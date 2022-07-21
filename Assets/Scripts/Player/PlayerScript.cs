@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     
     void Start()
     {
+        //Application.targetFrameRate = 60;
         inventory = new Stack<string>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

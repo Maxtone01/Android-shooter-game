@@ -4,57 +4,79 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    //[SerializeField]
-    //private ScriptableObject _pistol, _riffle;
-    //[SerializeField]
-    //private WeaponType equippedWeapon;
+    public Weapon _pistol, _riffle;
+    public GunShoot _gunShoot;
+    public Weapon equippedWeapon;
     [SerializeField]
     private PlayerScript _playerScript;
     [SerializeField]
     private Transform _weaponSlot;
     private GameObject _currentWeapon;
-    //private Weapon _weaponBullets;
-    //public int _bulletsQuantity;
+    public int _bulletsPistol, _bulletsRiffle;
+    public GameObject _activePistol, _activeRiffle;
 
-    public enum WeaponType
+    public List<Weapon> weapons;
+
+    private void Start()
     {
-        Pistol,
-        Riffle,
+        _gunShoot = GetComponent<GunShoot>();
 
+        _activePistol = Instantiate(_pistol.weaponPrefab);
+        _activePistol.SetActive(false);
+        _activePistol.transform.SetParent(_weaponSlot);
+        _activePistol.transform.localPosition = Vector3.zero;
+        _activePistol.transform.localRotation = Quaternion.identity;
+        _bulletsPistol = _pistol.bulletsQuantity;
+        _gunShoot._shootingDelay = _pistol.shootingDelay;
+
+        _activeRiffle = Instantiate(_riffle.weaponPrefab);
+        _activeRiffle.SetActive(false);
+        _activeRiffle.transform.SetParent(_weaponSlot);
+        _activeRiffle.transform.localPosition = Vector3.zero;
+        _activeRiffle.transform.localRotation = Quaternion.identity;
+        _bulletsRiffle = _riffle.bulletsQuantity;
+        _gunShoot._shootingDelay = _riffle.shootingDelay;
     }
-    public WeaponType weaponType;
 
-    public void SetWeapon(Weapon _weaponType)
+    public void SetWeaponData(string _weaponType)
     {
-        //GameObject weapon = _weaponType switch
-        //{
-        //Weapon.WeaponType.Riffle => _riffle,
-        //Weapon.WeaponType.Pistol => _pistol,
-        //_ => throw new System.NotImplementedException()
-        //};
-        if (_currentWeapon != null)
-            Destroy(_currentWeapon);
-        //switch (weaponName)
-        //{
-        //    case Weapon.WeaponType.Pistol:
-        _currentWeapon = Instantiate(_weaponType.weaponPrefab);
-        _currentWeapon.transform.SetParent(_weaponSlot);
-        _currentWeapon.transform.localPosition = Vector3.zero;
-        _currentWeapon.transform.localRotation = Quaternion.identity;
-        //        print(_currentWeapon);
-        //        break;
-        //    case Weapon.WeaponType.Riffle:
-        //        _currentWeapon = Instantiate(_weaponType.weaponPrefab);
-        //        _currentWeapon.transform.SetParent(_weaponSlot);
-        //        _currentWeapon.transform.localPosition = Vector3.zero;
-        //        _currentWeapon.transform.localRotation = Quaternion.identity;
-        //        print(_currentWeapon);
-        //        break;
-        //}
-        //_currentWeapon = Instantiate(weapon);
-        //_currentWeapon.transform.SetParent(_weaponSlot);
-        //_currentWeapon.transform.localPosition = Vector3.zero;
-        //_currentWeapon.transform.localRotation = Quaternion.identity;
-        //print(_currentWeapon);
+        switch (_weaponType)
+        {
+            case "Pistol":
+                _activePistol.SetActive(true);
+                _activeRiffle.SetActive(false);
+                Counter.quantity = _bulletsPistol;
+                break;
+            case "Riffle":
+                _activePistol.SetActive(false);
+                _activeRiffle.SetActive(true);
+                Counter.quantity = _bulletsRiffle;
+                break;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            print("Reloaded");
+            Reload();
+        }
+    }
+
+    private void Reload()
+    {
+        if (_activePistol.activeSelf)
+        {
+            _bulletsPistol = _pistol.bulletsQuantity;
+            Counter.quantity = _bulletsPistol;
+            print("Reloaded Pistol");
+        }
+        if (_activeRiffle.activeSelf)
+        {
+            _bulletsRiffle = _riffle.bulletsQuantity;
+            Counter.quantity = _bulletsRiffle;
+            print("Reloaded Riffle");
+        }
     }
 }

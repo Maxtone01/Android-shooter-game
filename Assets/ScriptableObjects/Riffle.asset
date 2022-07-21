@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54cc7aa961e85544abb4812acf3bb00, type: 3}
   m_Name: Riffle
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 4412547097932376053, guid: bd3eb5028dd7c1b41b9d8e71ae08cbc4, type: 3}
+  weaponPrefab: {fileID: 1829675277936661031, guid: ecee6bd89e922d942bb4fc13823fe72b, type: 3}
   damage: 15
   bulletsQuantity: 30
   weaponType: 1
   clipType: 0
+  shootingDelay: 0.2

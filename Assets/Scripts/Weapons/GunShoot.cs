@@ -11,12 +11,12 @@ public class GunShoot : MonoBehaviour
     public Joystick joystick;
     public GameObject _gun;
     public float offset;
-    public float _shootingDelay = 0.1f;
+    public float _shootingDelay;
     private float rotz;
     private float _currentDelay = 0f;
     private bool _canShoot = true;
     //public Weapon _weapon;
-    //public int _bulletsQuantity;
+    public int _bulletsQuantity;
 
     //private void Start()
     //{
@@ -43,18 +43,33 @@ public class GunShoot : MonoBehaviour
 
     public void Shoot()
     {
-        //if (joystick.Horizontal != 0 || joystick.Vertical != 0)
-        //{
-        //    if (_bulletsQuantity > 0)
-        //        if (_canShoot)
-        //        {
-        //            _canShoot = false;
-        //            _currentDelay = _shootingDelay;
-        //            GameObject bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
-        //            _bulletsQuantity--;
-        //            //print($"{_weaponController.damage} {_weaponController.bulletsQuantity}");
-        //            Destroy(bullet, 2f);
-        //        }
-        //}
+        if (_weaponController._activePistol.activeSelf)
+            if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+            {
+                if (_weaponController._bulletsPistol > 0)
+                    if (_canShoot)
+                    {
+                        _canShoot = false;
+                        _currentDelay = _shootingDelay;
+                        GameObject bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
+                        _weaponController._bulletsPistol--;
+                        Counter.quantity--;
+                        Destroy(bullet, 2f);
+                    }
+            }
+            if (_weaponController._activeRiffle.activeSelf)
+                if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+                {
+                    if (_weaponController._bulletsRiffle > 0)
+                        if (_canShoot)
+                        {
+                            _canShoot = false;
+                            _currentDelay = _shootingDelay;
+                            GameObject bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
+                            _weaponController._bulletsRiffle--;
+                            Counter.quantity--;
+                            Destroy(bullet, 2f);
+                        }
+                }
     }
 }

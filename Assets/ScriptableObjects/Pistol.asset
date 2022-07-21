@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54cc7aa961e85544abb4812acf3bb00, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 5731943103734709637, guid: d7187e43008b24744a30be2aea2d0213, type: 3}
+  weaponPrefab: {fileID: 7440651391795170135, guid: 66a3b3013e1d68a468e43b66f3dcc5c3, type: 3}
   damage: 5
   bulletsQuantity: 10
   weaponType: 0
   clipType: 1
+  shootingDelay: 0.78

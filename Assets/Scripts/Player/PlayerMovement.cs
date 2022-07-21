@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_moveInput.x == 0 & _moveInput.y == 0)
-            _playerScript.animator.Play("Player_idle2");
+            _playerScript.animator.Play("PlayerIDE");
         if (_moveInput.x > 0 & _moveInput.y > -0.3 && _moveInput.x > 0 & _moveInput.y < 0.27 )
-            _playerScript.animator.Play("Player_walk_2");
+            _playerScript.animator.Play("PlayerRun");
         if (_moveInput.y > 0.7)
-            _playerScript.animator.Play("Back_walk");
+            _playerScript.animator.Play("RunUp");
         if (_moveInput.y < -0.4)
-            _playerScript.animator.Play("Player_front_walk");
+            _playerScript.animator.Play("PlayerRunDown");
         _playerScript.rb2d.MovePosition(_playerScript.rb2d.position + _moveVelocity * Time.fixedDeltaTime);
         //_playerScript.spriteRenderer[1].flipX = _moveInput.x < 0.0f;
         //_playerScript.spriteRenderer[0].flipX = _moveInput.x < 0.0f;
