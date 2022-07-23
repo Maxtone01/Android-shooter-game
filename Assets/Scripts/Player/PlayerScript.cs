@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     private WeaponController weaponController;
-    public Stack<string> inventory;
+    public List<string> inventory;
     internal Rigidbody2D rb2d;
     internal Animator animator;
     internal SpriteRenderer[] spriteRenderer;
@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         //Application.targetFrameRate = 60;
-        inventory = new Stack<string>();
+        inventory = new List<string>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
@@ -29,15 +29,12 @@ public class PlayerScript : MonoBehaviour
         {
             string itemType = collision.gameObject.GetComponent<CollectableScript>().itemType;
             Sprite weapon = Resources.Load(itemType, typeof(Sprite)) as Sprite;
-            spriteRenderer[1].sprite = weapon;
-            //print(spriteRenderer[1].sprite.name);
-            //print("Sprite: " + spriteRenderer[1].sprite);
-            //print("Colected: " + itemType);
             if (!inventory.Contains(itemType))
             {
-                inventory.Push(itemType);
+                inventory.Add(itemType);
             }
-            
+            Destroy(collision.gameObject);
+
         }
     }
 }
