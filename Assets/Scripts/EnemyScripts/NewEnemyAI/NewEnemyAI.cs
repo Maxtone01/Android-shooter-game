@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NewEnemyAI : MonoBehaviour
 {
+    [SerializeField]
     public EnemyPathfinding _pathFinding;
     private Vector3 _startPosition;
     private Vector3 _patrolingPosition;
@@ -22,6 +23,7 @@ public class NewEnemyAI : MonoBehaviour
     private void Update()
     {
         _pathFinding.MoveTo(_patrolingPosition);
+
         float finalPosition = 1f;
         if (Vector3.Distance(transform.position, _patrolingPosition) < finalPosition)
         {

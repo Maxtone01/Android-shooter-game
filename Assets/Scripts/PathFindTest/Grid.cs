@@ -28,6 +28,7 @@ public class Grid<TgridObject>
         this._originPosition = originPosition;
 
         _gridArray = new TgridObject[_width, _height];
+
         for (int x = 0; x < _gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < _gridArray.GetLength(1); y++)
@@ -36,24 +37,44 @@ public class Grid<TgridObject>
             }
         }
 
-        _debugTextArray = new TextMesh[width, height];
-
-
-
-        for (int x = 0; x < _gridArray.GetLength(0); x++)
+        bool showDebug = true;
+        if (showDebug)
         {
-            for (int y = 0; y < _gridArray.GetLength(1); y++)
+            TextMesh[,] _debugTextArray = new TextMesh[width, height];
+            for (int x = 0; x < _gridArray.GetLength(0); x++)
             {
-                _debugTextArray[x, y] = CreateWorldText(_gridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * .5f, 30, Color.white, TextAnchor.MiddleCenter);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                for (int y = 0; y < _gridArray.GetLength(1); y++)
+                {
+                    _debugTextArray[x, y] = CreateWorldText(_gridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * .5f, 30, Color.white, TextAnchor.MiddleCenter);
+                    Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
+                    Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                }
             }
+            Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
+            Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
+
+            onGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) => {
+                _debugTextArray[eventArgs.x, eventArgs.y].text = _gridArray[eventArgs.x, eventArgs.y]?.ToString();
+            };
         }
-        Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
-        Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
     }
 
-    private Vector3 GetWorldPosition(int x, int y)
+    public float GetCellSize()
+    {
+        return cellSize;
+    }
+
+    public int GetWidth()
+    { 
+        return _width;
+    }
+
+    public int GetHeight()
+    {
+        return _height;
+    }
+
+    public Vector3 GetWorldPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize + _originPosition;
     }
@@ -99,7 +120,7 @@ public class Grid<TgridObject>
         return GetGridObject(x, y);
     }
 
-    private void GetXY(Vector3 worldPosition, out int x, out int y)
+    public void GetXY(Vector3 worldPosition, out int x, out int y)
     {
         x = Mathf.FloorToInt((worldPosition  - _originPosition).x / cellSize);
         y = Mathf.FloorToInt((worldPosition - _originPosition).y / cellSize);

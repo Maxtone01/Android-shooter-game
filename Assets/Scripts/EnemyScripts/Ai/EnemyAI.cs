@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+
     [SerializeField]
     public AIBehaviour shootBehaviour, patrolBehaviour;
 

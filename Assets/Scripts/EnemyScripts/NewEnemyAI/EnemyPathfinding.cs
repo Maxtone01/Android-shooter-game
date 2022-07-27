@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +14,7 @@ public class EnemyPathfinding : MonoBehaviour
     private void Awake()
     {
         _enemyController = GetComponent<EnemyController>();
+        print(_enemyController);
     }
 
     private void Update()
@@ -64,7 +63,7 @@ public class EnemyPathfinding : MonoBehaviour
         _moveDir = Vector3.zero;
     }
 
-    private List<Vector3> GetpathVectorList() 
+    private List<Vector3> GetPathVectorList() 
     {
         return _pathVectorList;
     }
@@ -85,13 +84,22 @@ public class EnemyPathfinding : MonoBehaviour
         SetTargetPosition(targetPosition);
     }
 
+    public void MoveToTimer(Vector3 targetPosition)
+    {
+        if (_pathfindingTimer <= 0)
+        {
+            SetTargetPosition(targetPosition);
+        }
+    }
+
     private void SetTargetPosition(Vector3 targetPosition)
     {
-        //_pathVectorList = GridPathfinding.instance.GetPathRouteWithShortcuts(GetPosition(), targetPosition).pathVectorList;
         _currentPathIndex = 0;
+
+        _pathVectorList = PathFinding.Instance.FindPath(GetPosition(), targetPosition);
         _pathfindingTimer = .2f;
 
-        if(_pathVectorList != null && _pathVectorList.Count > 1)
+        if (_pathVectorList != null && _pathVectorList.Count > 1)
             _pathVectorList.RemoveAt(0);
     }
     private Vector3 GetPosition()

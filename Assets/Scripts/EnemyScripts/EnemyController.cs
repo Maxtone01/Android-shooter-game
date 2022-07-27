@@ -28,8 +28,8 @@ public class EnemyController : MonoBehaviour
 
     public void HandleMoveBody(Vector2 movementVector)
     {
-        enemyMover.Move(movementVector);
-        animator.Play("Enemy00Run");
+        //enemyMover.Move(movementVector);
+        //animator.Play("Enemy00Run");
         if (movementVector.x > 1)
             spriteRenderer.flipX = false;
         else if (movementVector.y < -1)

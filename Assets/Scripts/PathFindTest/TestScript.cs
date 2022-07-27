@@ -5,9 +5,39 @@ using UnityEngine;
 public class TestScript : MonoBehaviour
 {
 
+    [SerializeField]
+    private PathfindingVisual _pathFindingVisual;
+
+    private PathFinding _pathFinding;
     private void Start()
     {
-        PathFinding pathFinding = new PathFinding(10, 10);
+        _pathFinding = new PathFinding(10, 10);
+        _pathFindingVisual.SetGrid(_pathFinding.GetGrid());
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Vector3 mouseWorldPosition = GetMouseWorldPosition();
+            _pathFinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
+            List<PathNode> path = _pathFinding.FindPath(0, 0, x, y);
+            if (path != null)
+            {
+                for (int i = 0; i < path.Count - 1; i++)
+                {
+                    Debug.DrawLine(new Vector3(path[i].x, path[i].y) * 10f + Vector3.one * 5f,
+                        new Vector3(path[i+1].x, path[i+1].y) * 10f + Vector3.one * 5f, Color.green);
+                }
+            }
+            print(path);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 mouseWorldPosition = GetMouseWorldPosition();
+            _pathFinding.GetGrid().GetXY(mouseWorldPosition, out int x, out int y);
+            _pathFinding.GetNode(x, y).SetIsWalkable(!_pathFinding.GetNode(x, y).isWalkable);
+        }
     }
 
 
