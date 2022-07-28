@@ -17,7 +17,7 @@ public class PathFinding
     public PathFinding(int width, int height)
     {
         Instance = this;
-        _grid = new Grid<PathNode>(width, height, 10f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+        _grid = new Grid<PathNode>(width, height, 0.5f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
     }
 
     public Grid<PathNode> GetGrid()
@@ -28,9 +28,10 @@ public class PathFinding
     public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition) 
     {
         _grid.GetXY(startWorldPosition, out int startX, out int startY);
-        _grid.GetXY(startWorldPosition, out int endX, out int endY);
+        _grid.GetXY(endWorldPosition, out int endX, out int endY);
 
         List<PathNode> path = FindPath(startX, startY, endX, endY);
+
         if (path == null)
         {
             return null;

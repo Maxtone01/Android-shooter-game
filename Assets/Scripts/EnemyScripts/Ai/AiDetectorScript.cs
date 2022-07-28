@@ -6,7 +6,7 @@ public class AiDetectorScript : MonoBehaviour
 {
     [Range(1, 15)]
     [SerializeField]
-    private float viewRadius = 11;
+    private float viewRadius = 6;
     [SerializeField]
     private float detectionCheckDelay = 0.1f;
     [SerializeField]

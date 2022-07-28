@@ -33,8 +33,8 @@ public class PathNode
         _grid.OnTriggerGridChanged(x, y);
     }
 
-    public override string ToString()
-    {
-        return x + "," + y;
-    }
+    //public override string ToString()
+    //{
+    //    return x + "," + y;
+    //}
 }

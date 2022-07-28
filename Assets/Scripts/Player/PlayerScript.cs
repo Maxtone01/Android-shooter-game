@@ -11,9 +11,12 @@ public class PlayerScript : MonoBehaviour
     internal Animator animator;
     internal SpriteRenderer[] spriteRenderer;
     private Sprite _pistol, _riffle;
-    
+
+    public static PlayerScript Instance { get; private set; }
+
     void Start()
     {
+        Instance = this;
         //Application.targetFrameRate = 60;
         inventory = new List<string>();
         rb2d = GetComponent<Rigidbody2D>();

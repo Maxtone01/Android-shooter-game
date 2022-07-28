@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class EnemyPathfinding : MonoBehaviour
 {
-    private const float _speed = 30f;
-    private EnemyController _enemyController;
+    private const float _speed = 20f;
     private List<Vector3> _pathVectorList;
     private int _currentPathIndex;
     private float _pathfindingTimer;
     private Vector3 _moveDir;
     private Vector3 _lastMoveDir;
+    private PathFinding _pathFinding;
+    private Rigidbody2D _rb2d;
 
     private void Awake()
     {
-        _enemyController = GetComponent<EnemyController>();
-        print(_enemyController);
+        _rb2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -25,7 +25,8 @@ public class EnemyPathfinding : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _enemyController.rb2d.velocity = _moveDir * _speed;
+        _rb2d.velocity = _moveDir * _speed;
+        //_enemyController.rb2d.velocity = _moveDir * _speed;
     }
 
     private void HandleMovement()
@@ -34,7 +35,7 @@ public class EnemyPathfinding : MonoBehaviour
         if (_pathVectorList != null)
         {
             Vector3 targetPosition = _pathVectorList[_currentPathIndex];
-            float reachedTarget = 5f;
+            float reachedTarget = 14f;
             if (Vector3.Distance(GetPosition(), targetPosition) > reachedTarget)
             {
                 _moveDir = (targetPosition - GetPosition()).normalized;
@@ -57,7 +58,7 @@ public class EnemyPathfinding : MonoBehaviour
         }
     }
 
-    private void StopMoving()
+    public void StopMoving()
     {
         _pathVectorList = null;
         _moveDir = Vector3.zero;
@@ -92,7 +93,7 @@ public class EnemyPathfinding : MonoBehaviour
         }
     }
 
-    private void SetTargetPosition(Vector3 targetPosition)
+    public void SetTargetPosition(Vector3 targetPosition)
     {
         _currentPathIndex = 0;
 
@@ -120,6 +121,6 @@ public class EnemyPathfinding : MonoBehaviour
     public void Disable()
     {
         enabled = false;
-        _enemyController.rb2d.velocity = Vector3.zero;
+        _rb2d.velocity = Vector3.zero;
     }
 }
