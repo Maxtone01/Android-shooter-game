@@ -64,7 +64,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private void Reload()
+    public void Reload()
     {
         if (_activePistol.activeSelf)
         {
