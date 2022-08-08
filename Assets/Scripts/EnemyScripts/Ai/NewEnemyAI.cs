@@ -42,10 +42,9 @@ public class NewEnemyAI : MonoBehaviour
         switch (_state)
         {
             case State.Roaming:
-                _pathFinding.MoveToTimer(_patrolingPosition);
-                print("Roaming...");
+                _pathFinding.MoveTo(_patrolingPosition);
 
-                float finalPosition = 2f;
+                float finalPosition = 1f;
                 if (Vector3.Distance(transform.position, _patrolingPosition) < finalPosition)
                 {
                     _patrolingPosition = GetPatrolingPosition();
@@ -54,8 +53,7 @@ public class NewEnemyAI : MonoBehaviour
                 break;
 
             case State.Chasing:
-                _pathFinding.MoveToTimer(PlayerScript.Instance.transform.position);
-                print("Chasing...");
+                _pathFinding.MoveTo(PlayerScript.Instance.transform.position);
 
                 if (detector.TargetVisible)
                 {
@@ -68,17 +66,15 @@ public class NewEnemyAI : MonoBehaviour
                 //if (Vector3.Distance(transform.position, PlayerScript.Instance.transform.position) > stopChaseDistance)
                 if (!detector.TargetVisible)
                 {
-                    print(Vector3.Distance(transform.position, PlayerScript.Instance.transform.position));
                     _state = State.GoToStart;
                 }
                 break;
 
             case State.GoToStart:
-                print("Goin to start position...");
-                _pathFinding.MoveToTimer(_startPosition);
+                _pathFinding.MoveTo(_startPosition);
 
                 float reachedPositionDistance = 10f;
-                if (Vector3.Distance(transform.position, PlayerScript.Instance.transform.position) < reachedPositionDistance)
+                if (Vector3.Distance(transform.position, PlayerScript.Instance.transform.position) > reachedPositionDistance)
                     _state = State.Roaming;
                 break;
         }

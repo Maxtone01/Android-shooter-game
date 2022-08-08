@@ -20,7 +20,7 @@ public class Grid<TgridObject>
         public int y;
     }
 
-    public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TgridObject>, int, int, TgridObject> createGridObject)
+    public Grid(LayerMask unwalkableMask, int width, int height, float cellSize, Vector2 originPosition, Func<Grid<TgridObject>, int, int, bool, TgridObject> createGridObject)
     {
         this._width = width;
         this._height = height;
@@ -33,7 +33,8 @@ public class Grid<TgridObject>
         {
             for (int y = 0; y < _gridArray.GetLength(1); y++)
             {
-                _gridArray[x, y] = createGridObject(this, x, y);
+                bool _walkable = (Physics2D.OverlapCircle(GetNodePosition(x, y), cellSize, unwalkableMask) == null);
+                _gridArray[x, y] = createGridObject(this, x, y, _walkable);
             }
         }
 
@@ -46,14 +47,15 @@ public class Grid<TgridObject>
                 for (int y = 0; y < _gridArray.GetLength(1); y++)
                 {
                     //_debugTextArray[x, y] = CreateWorldText(_gridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * .5f, 8, Color.white, TextAnchor.MiddleCenter);
-                    Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                    Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                    Debug.DrawLine(GetNodePosition(x, y), GetNodePosition(x, y + 1), Color.blue, 100f);
+                    Debug.DrawLine(GetNodePosition(x, y), GetNodePosition(x + 1, y), Color.white, 100f);
                 }
             }
-            Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
-            Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
+            Debug.DrawLine(GetNodePosition(0, height), GetNodePosition(width, height), Color.white, 100f);
+            Debug.DrawLine(GetNodePosition(width, 0), GetNodePosition(width, height), Color.white, 100f);
 
-            onGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) => {
+            onGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) =>
+            {
                 _debugTextArray[eventArgs.x, eventArgs.y].text = _gridArray[eventArgs.x, eventArgs.y]?.ToString();
             };
         }
@@ -74,7 +76,7 @@ public class Grid<TgridObject>
         return _height;
     }
 
-    public Vector3 GetWorldPosition(int x, int y)
+    public Vector3 GetNodePosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize + _originPosition;
     }

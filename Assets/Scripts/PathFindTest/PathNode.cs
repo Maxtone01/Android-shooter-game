@@ -19,16 +19,21 @@ public class PathNode
     {
         fCost = gCost + hCost;
     }
-    public PathNode(Grid<PathNode> grid, int x, int y)
+
+    public PathNode(Grid<PathNode> grid, int x, int y, bool walkable)
     {
         this._grid = grid;
         this.x = x;
         this.y = y;
-        isWalkable = true;
+        this.isWalkable = walkable;
+        if (!walkable)
+        {
+            SetIsWalkable(walkable);
+        }
     }
 
     public void SetIsWalkable(bool isWalkable)
-    { 
+    {
         this.isWalkable = isWalkable;
         _grid.OnTriggerGridChanged(x, y);
     }

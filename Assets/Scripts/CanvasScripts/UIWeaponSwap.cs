@@ -5,24 +5,35 @@ using UnityEngine.EventSystems;
 
 public class UIWeaponSwap : MonoBehaviour, IPointerClickHandler
 {
-    private SwitchSystem.WeaponSwitcher _weaponSwitcher;
-    //public RectTransform pistolButton, riffleButton;
+    private Transform _weaponSlot;
 
-    //private void Start()
-    //{
-    //    pistolButton = GetComponent<RectTransform>();
-    //    riffleButton = GetComponent<RectTransform>();
-    //}
+    public static UIWeaponSwap Instance { get; private set; }
 
-    public void SetWeaponType(SwitchSystem.WeaponSwitcher _weaponSwitcher)
+    private void Start()
     {
-        this._weaponSwitcher = _weaponSwitcher;
+        Instance = this;
+        _weaponSlot = transform.Find("WeaponSlots");
     }
+
+    public void ActivateWeapon(string weapon)
+    {
+        switch (weapon) 
+        {
+            case "Pistol":
+                if(!_weaponSlot.Find("Pistol").gameObject.activeSelf)
+                    _weaponSlot.Find("Pistol").gameObject.SetActive(true);
+                break;
+            case "Riffle":
+                if (!_weaponSlot.Find("Riffle").gameObject.activeSelf)
+                    _weaponSlot.Find("Riffle").gameObject.SetActive(true);
+                break;
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log(weaponClicked = eventData.pointerCurrentRaycast.gameObject.name);
-        _weaponSwitcher.activateWeapon();
-        //_switchSystem.Weapon(weaponClicked);
+        string weapon = eventData.pointerCurrentRaycast.gameObject.name;
+        SwitchSystem.Instance.Weapon(weapon);
     }
 
 }

@@ -20,6 +20,7 @@ public class EnemyPathfinding : MonoBehaviour
     private void Update()
     {
         _pathfindingTimer -= Time.deltaTime;
+
         HandleMovement();
     }
 
@@ -35,7 +36,7 @@ public class EnemyPathfinding : MonoBehaviour
         if (_pathVectorList != null)
         {
             Vector3 targetPosition = _pathVectorList[_currentPathIndex];
-            float reachedTarget = 14f;
+            float reachedTarget = 5f;
             if (Vector3.Distance(GetPosition(), targetPosition) > reachedTarget)
             {
                 _moveDir = (targetPosition - GetPosition()).normalized;
@@ -98,7 +99,7 @@ public class EnemyPathfinding : MonoBehaviour
         _currentPathIndex = 0;
 
         _pathVectorList = PathFinding.Instance.FindPath(GetPosition(), targetPosition);
-        _pathfindingTimer = .2f;
+        _pathfindingTimer = .1f;
 
         if (_pathVectorList != null && _pathVectorList.Count > 1)
             _pathVectorList.RemoveAt(0);

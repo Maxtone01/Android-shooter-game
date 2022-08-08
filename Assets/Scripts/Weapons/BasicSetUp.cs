@@ -25,8 +25,4 @@ public class BasicSetUp : MonoBehaviour
         _hotkeyWeapons.SetWeaponSytem(_weaponSystem);
         
     }
-    //void Update()
-    //{
-    //    _weaponSystem.Update();
-    //}
 }

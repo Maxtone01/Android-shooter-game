@@ -14,10 +14,10 @@ public class PathFinding
     private List<PathNode> _closedList;
     private Grid<PathNode> _grid;
 
-    public PathFinding(int width, int height)
+    public PathFinding(int width, int height, LayerMask unwalkableMask)
     {
         Instance = this;
-        _grid = new Grid<PathNode>(width, height, 0.5f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+        _grid = new Grid<PathNode>(unwalkableMask, width, height, 1f, Vector2.zero, (Grid<PathNode> g, int x, int y, bool unwalkable) => new PathNode(g, x, y, unwalkable));
     }
 
     public Grid<PathNode> GetGrid()

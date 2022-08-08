@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchSystem
+public class SwitchSystem: MonoBehaviour
 {
     public enum WeaponType 
     {
@@ -13,6 +13,14 @@ public class SwitchSystem
 
     private WeaponController _weaponSwitch;
     private List<WeaponSwitcher> _weaponList;
+
+    public static SwitchSystem Instance { get; private set; }
+
+    private void Start()
+    {
+        Instance = this;
+        _weaponSwitch = GetComponent<WeaponController>();
+    }
 
     public SwitchSystem(WeaponController _weapon)
     { 
@@ -37,19 +45,21 @@ public class SwitchSystem
     //    _weaponController = GetComponent<WeaponController>();
     //}
 
-    //public void Weapon(string weapon)
-    //{
-    //    switch (weapon)
-    //    {
-    //        case "Pistol":
-    //            _weaponController.SetWeaponData("Pistol");
-    //            break;
-    //        case "Riffle":
-    //            _weaponController.SetWeaponData("Riffle");
-    //            break;
-    //    }
-
-    //}
+    public void Weapon(string weapon)
+    {
+        switch (weapon)
+        {
+            case "Pistol":
+                _weaponSwitch.SetWeaponData("Pistol");
+                break;
+            case "Riffle":
+                if (SimpleInventory.Instance.inventory.Contains("Pistol"))
+                    _weaponSwitch.SetWeaponData("Riffle");
+                else
+                    print("Not in inventory");
+                break;
+        }
+    }
 
     public List<WeaponSwitcher> GetWeaponsInList()
     {

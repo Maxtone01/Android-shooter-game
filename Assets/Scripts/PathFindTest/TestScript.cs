@@ -7,10 +7,15 @@ public class TestScript : MonoBehaviour
     [SerializeField]
     private EnemyPathfinding _enemyPathFinding;
 
+    public int _width;
+    public int _height;
+
+    public LayerMask unwalkableMask;
+
     private PathFinding _pathFinding;
     private void Start()
     {
-        _pathFinding = new PathFinding(20, 20);
+        _pathFinding = new PathFinding(_width, _height, unwalkableMask);
     }
 
     //private void Update()

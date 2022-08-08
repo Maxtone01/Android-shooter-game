@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a3d20eda709fa7b458c92f7e59ebe2ce
+guid: bb9f68591865dd3499f2c098d84541a4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 127
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CUMpyter0015_0
+      name: heroleftstablerunv4_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 546
-        width: 128
-        height: 127
+        x: 165
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c672466aea4012743bf57e67b0906bee
-      internalID: -1946113074
+      spriteID: aa8c5be6a55744448b6666b0b1fc0544
+      internalID: -1027089733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_1
+      name: heroleftstablerunv4_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 419
-        width: 128
-        height: 127
+        x: 198
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ea4057668603994d86dd9f282c2c468
-      internalID: -1659174310
+      spriteID: 39364d536bd0cb445b3dfad26b143a03
+      internalID: -1857202258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_2
+      name: heroleftstablerunv4_7
       rect:
         serializedVersion: 2
-        x: 128
-        y: 419
-        width: 128
-        height: 127
+        x: 231
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7e950f9b902b8a4c9aca803692860f3
-      internalID: -1229488578
+      spriteID: 6458b60dd277b2f4cbf9964bd74d1577
+      internalID: -1446490174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_3
+      name: heroleftstablerunv4_8
       rect:
         serializedVersion: 2
-        x: 256
-        y: 419
-        width: 128
-        height: 127
+        x: 264
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ec949eb3078fe240828c7410b71fc99
-      internalID: -798998779
+      spriteID: 4a1d0da45b260d24baa1196af4f7d1db
+      internalID: 248526017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_4
+      name: heroleftstablerunv4_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 292
-        width: 128
-        height: 127
+        x: 297
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0db680e2db6dad4581b28701c8b4829
-      internalID: 56168732
+      spriteID: 904a7028e08b3a64089387d32f675f14
+      internalID: 1592347073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_5
+      name: heroleftstablerunv4_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 292
-        width: 128
-        height: 127
+        x: 330
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc450faf136b6f24087ee3a81cbb3f0d
-      internalID: 1195765684
+      spriteID: 146c424d9e3fa6241841a3a9edac1887
+      internalID: -2106959601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_6
+      name: heroleftstablerunv4_11
       rect:
         serializedVersion: 2
-        x: 256
-        y: 292
-        width: 128
-        height: 127
+        x: 363
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dc3a5e16c654e24c87561be3a5985d5
-      internalID: -55517620
+      spriteID: 2bcaea2147e2e6742aca5bc9e2d4166c
+      internalID: 1891745242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_7
+      name: heroleftstablerunv4_12
       rect:
         serializedVersion: 2
-        x: 384
-        y: 292
-        width: 128
-        height: 127
+        x: 396
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,20 +277,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d4aa0bd46864a04f8e0ffd98dc3487d
-      internalID: 217517663
+      spriteID: 8369f0760564daa40a68380e75338668
+      internalID: 26292991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_8
+      name: heroleftstablerunv4_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 165
-        width: 128
-        height: 127
+        x: 429
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,20 +298,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87c98958098b2c041a9490ab6cd6ef4c
-      internalID: 1467917299
+      spriteID: 9239a14acfe74df449b97f07412e2589
+      internalID: 2121229273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_9
+      name: heroleftstablerunv4_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 165
-        width: 128
-        height: 127
+        x: 462
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,20 +319,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b345a3c605e060146ad9d99b2f6ec36e
-      internalID: 333915635
+      spriteID: 94888de294626ca4f8f2539ca81ea991
+      internalID: -1559692307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_10
+      name: heroleftstablerunv4_15
       rect:
         serializedVersion: 2
-        x: 256
-        y: 165
-        width: 128
-        height: 127
+        x: 495
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,20 +340,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0442c1a6cbfd72743a22f5cfecb253bc
-      internalID: 1084097517
+      spriteID: 3065c907b40405c4596b84c1e0401e2a
+      internalID: -1234076709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CUMpyter0015_11
+      name: heroleftstablerunv4_16
       rect:
         serializedVersion: 2
-        x: 384
-        y: 165
-        width: 128
-        height: 127
+        x: 528
+        y: 0
+        width: 33
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,8 +361,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e673e04f63613ef4291548b281c6e6c5
-      internalID: -727415278
+      spriteID: f8fc7da885b08a7438f9615a8c1f744b
+      internalID: 1941038308
       vertices: []
       indices: 
       edges: []
@@ -378,18 +378,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CUMpyter0015_0: -1946113074
-      CUMpyter0015_9: 333915635
-      CUMpyter0015_1: -1659174310
-      CUMpyter0015_2: -1229488578
-      CUMpyter0015_10: 1084097517
-      CUMpyter0015_6: -55517620
-      CUMpyter0015_5: 1195765684
-      CUMpyter0015_4: 56168732
-      CUMpyter0015_3: -798998779
-      CUMpyter0015_7: 217517663
-      CUMpyter0015_11: -727415278
-      CUMpyter0015_8: 1467917299
+      heroleftstablerunv4_5: -1027089733
+      heroleftstablerunv4_14: -1559692307
+      heroleftstablerunv4_11: 1891745242
+      heroleftstablerunv4_6: -1857202258
+      heroleftstablerunv4_10: -2106959601
+      heroleftstablerunv4_1: -370152175
+      heroleftstablerunv4_3: 414024243
+      heroleftstablerunv4_4: 600540077
+      heroleftstablerunv4_12: 26292991
+      heroleftstablerunv4_16: 1941038308
+      heroleftstablerunv4_0: -1793959000
+      heroleftstablerunv4_8: 248526017
+      heroleftstablerunv4_2: -231270572
+      heroleftstablerunv4_9: 1592347073
+      heroleftstablerunv4_13: 2121229273
+      heroleftstablerunv4_7: -1446490174
+      heroleftstablerunv4_15: -1234076709
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
