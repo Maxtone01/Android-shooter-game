@@ -55,25 +55,23 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public void CallReload()
     {
-        if (Input.GetKey(KeyCode.R))
-        {
-            print("Reloaded");
-            Reload();
-        }
+        StartCoroutine(Reload());
     }
 
-    public void Reload()
+    public IEnumerator Reload()
     {
         if (_activePistol.activeSelf)
         {
+            yield return new WaitForSeconds(2);
             _bulletsPistol = _pistol.bulletsQuantity;
             Counter.quantity = _bulletsPistol;
             print("Reloaded Pistol");
         }
         if (_activeRiffle.activeSelf)
         {
+            yield return new WaitForSeconds(2);
             _bulletsRiffle = _riffle.bulletsQuantity;
             Counter.quantity = _bulletsRiffle;
             print("Reloaded Riffle");

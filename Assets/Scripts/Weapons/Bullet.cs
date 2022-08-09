@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    PlayerScript _playerScript;
-
     public float speed;
 
     public void FixedUpdate()
@@ -17,13 +14,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Physics2D.IgnoreLayerCollision(_playerScript.gameObject.layer, gameObject.layer);
+            print("Hit Wall");
+            Destroy(gameObject);
         }
-        //if (collision.gameObject.CompareTag("Ground"))
-        //{
-        //    Destroy(gameObject);
-        //}
     }
 }

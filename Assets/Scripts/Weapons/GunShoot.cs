@@ -15,13 +15,7 @@ public class GunShoot : MonoBehaviour
     private float rotz;
     private float _currentDelay = 0f;
     private bool _canShoot = true;
-    //public Weapon _weapon;
     public int _bulletsQuantity;
-
-    //private void Start()
-    //{
-    //    _bulletsQuantity = _weapon.bulletsQuantity;
-    //}
 
     private void Update()
     {
@@ -56,6 +50,8 @@ public class GunShoot : MonoBehaviour
                         Counter.quantity--;
                         Destroy(bullet, 2f);
                     }
+                if (_weaponController._bulletsPistol == 0)
+                   StartCoroutine(_weaponController.Reload());
             }
             if (_weaponController._activeRiffle.activeSelf)
                 if (joystick.Horizontal != 0 || joystick.Vertical != 0)
@@ -70,6 +66,8 @@ public class GunShoot : MonoBehaviour
                             Counter.quantity--;
                             Destroy(bullet, 2f);
                         }
-                }
+                    if (_weaponController._bulletsRiffle == 0)
+                        StartCoroutine(_weaponController.Reload());
+            }
     }
 }

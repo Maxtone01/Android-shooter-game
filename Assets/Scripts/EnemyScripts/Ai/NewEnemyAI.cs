@@ -61,7 +61,7 @@ public class NewEnemyAI : MonoBehaviour
                     _pathFinding.StopMoving();
                 }
 
-                float stopChaseDistance = 17f;
+                //float stopChaseDistance = 17f;
                 //float attackRange = 10f;
                 //if (Vector3.Distance(transform.position, PlayerScript.Instance.transform.position) > stopChaseDistance)
                 if (!detector.TargetVisible)

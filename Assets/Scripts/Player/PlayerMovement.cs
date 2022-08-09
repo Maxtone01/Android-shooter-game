@@ -6,23 +6,46 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private PlayerScript _playerScript;
-    public float _speed = 0.5f;
+    public float _speed;
     private Vector2 _moveInput;
     private Vector2 _moveVelocity;
+    private bool _isMoving = true;
     public Camera _camera;
     public Joystick _joystick;
+
     private void Update()
     {
-        float _rotateY = 0f;
-        _moveInput = new Vector2(_joystick.Horizontal, _joystick.Vertical);
-
-        _moveVelocity = _moveInput.normalized * _speed;
-        if (_moveInput.x < 0)
+        if (_isMoving)
         {
-            _rotateY = 180f;
+            _moveInput = new Vector2(_joystick.Horizontal, _joystick.Vertical);
+            _moveVelocity = _moveInput.normalized * _speed;
+
+            float _rotateY = 0f;
+            if (_moveInput.x < 0)
+            {
+                _rotateY = 180f;
+            }
+            transform.eulerAngles = new Vector3(transform.rotation.x, _rotateY, transform.rotation.z);
         }
-        transform.eulerAngles = new Vector3(transform.rotation.x, _rotateY, transform.rotation.z);
+        if (!_isMoving)
+        {
+            _moveInput = new Vector2(0, _joystick.Vertical);
+            _moveVelocity = _moveInput.normalized * _speed;
+        }
     }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Hittable"))
+    //    {
+    //        _isMoving = false;
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Hittable"))
+    //        _isMoving = true;
+    //}
 
     private void FixedUpdate()
     {

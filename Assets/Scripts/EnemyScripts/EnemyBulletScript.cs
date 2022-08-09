@@ -13,7 +13,7 @@ public class EnemyBulletScript : MonoBehaviour
     private float _conquartedDistance = 0;
     private Rigidbody2D _rb2d;
 
-    private void Awake()
+    private void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
     }
@@ -40,5 +40,11 @@ public class EnemyBulletScript : MonoBehaviour
             Physics2D.IgnoreLayerCollision(_enemy.gameObject.layer, gameObject.layer);
         }
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+            Destroy(gameObject);
     }
 }
