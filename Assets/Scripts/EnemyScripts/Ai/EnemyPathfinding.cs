@@ -17,17 +17,17 @@ public class EnemyPathfinding : MonoBehaviour
         _rb2d = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _pathfindingTimer -= Time.deltaTime;
 
         HandleMovement();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         _rb2d.velocity = _moveDir * _speed;
-        //_enemyController.rb2d.velocity = _moveDir * _speed;
+        //transform.position = Vector2.MoveTowards(transform.position, _moveDir, _speed * Time.deltaTime);
     }
 
     private void HandleMovement()

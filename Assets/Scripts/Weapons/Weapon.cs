@@ -19,6 +19,7 @@ public class Weapon : ScriptableObject
         heavyClip
     }
 
+    public int bulletsSupply;
     public GameObject weaponPrefab;
     public int damage;
     public int bulletsQuantity;

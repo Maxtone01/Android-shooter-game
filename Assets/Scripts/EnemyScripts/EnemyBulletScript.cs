@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
 {
-    private readonly EnemyController _enemy;
     public float speed = 10;
-    public float damage = 5;
+    public int damage = 5;
     public float maxDistance = 10;
 
     private Vector2 _startPosition;
     private float _conquartedDistance = 0;
-    private Rigidbody2D _rb2d;
+    internal Rigidbody2D _rb2d;
+    private EnemyController _enemyController;
 
-    private void Start()
+    private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
     }
@@ -31,15 +31,20 @@ public class EnemyBulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Destroy(gameObject, 5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Physics2D.IgnoreLayerCollision(_enemy.gameObject.layer, gameObject.layer);
+            Physics2D.IgnoreLayerCollision(_enemyController.gameObject.layer, gameObject.layer);
         }
-        Destroy(gameObject);
+        if (collision.gameObject.TryGetComponent<PlayerScript>(out PlayerScript playerScript))
+        {
+            playerScript.TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

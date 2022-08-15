@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NewEnemyAI : MonoBehaviour
 {
-    //public float finalPosition = 1f;
     [SerializeField]
     public EnemyPathfinding _pathFinding;
     private Vector3 _startPosition;
@@ -37,7 +36,7 @@ public class NewEnemyAI : MonoBehaviour
         _patrolingPosition = GetPatrolingPosition();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch (_state)
         {
@@ -60,10 +59,6 @@ public class NewEnemyAI : MonoBehaviour
                     shootBehaviour.PerformAction(enemy, detector);
                     _pathFinding.StopMoving();
                 }
-
-                //float stopChaseDistance = 17f;
-                //float attackRange = 10f;
-                //if (Vector3.Distance(transform.position, PlayerScript.Instance.transform.position) > stopChaseDistance)
                 if (!detector.TargetVisible)
                 {
                     _state = State.GoToStart;
@@ -78,15 +73,6 @@ public class NewEnemyAI : MonoBehaviour
                     _state = State.Roaming;
                 break;
         }
-
-        //_pathFinding.MoveToTimer(_patrolingPosition);
-
-        //float finalPosition = 1f;
-        //if (Vector3.Distance(transform.position, _patrolingPosition) < finalPosition)
-        //{
-        //    _patrolingPosition = GetPatrolingPosition();
-        //    print(_patrolingPosition);
-        //}
     }
 
     ///*Getting random patroling position*/
@@ -108,9 +94,4 @@ public class NewEnemyAI : MonoBehaviour
             _state = State.Chasing;
         }
     }
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, 5f);
-    //}
 }

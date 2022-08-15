@@ -15,7 +15,7 @@ public class GunShoot : MonoBehaviour
     private float rotz;
     private float _currentDelay = 0f;
     private bool _canShoot = true;
-    public int _bulletsQuantity;
+    //public int _bulletsQuantity;
 
     private void Update()
     {
@@ -40,33 +40,39 @@ public class GunShoot : MonoBehaviour
         if (_weaponController._activePistol.activeSelf)
             if (joystick.Horizontal != 0 || joystick.Vertical != 0)
             {
-                if (_weaponController._bulletsPistol > 0)
+                if (_weaponController.bulletsPistol > 0)
                     if (_canShoot)
                     {
                         _canShoot = false;
                         _currentDelay = _shootingDelay;
+
                         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
-                        _weaponController._bulletsPistol--;
+                        _weaponController.bulletsPistol--;
                         Counter.quantity--;
+
                         Destroy(bullet, 2f);
                     }
-                if (_weaponController._bulletsPistol == 0)
+
+                if (_weaponController.bulletsPistol == 0)
                    StartCoroutine(_weaponController.Reload());
             }
             if (_weaponController._activeRiffle.activeSelf)
                 if (joystick.Horizontal != 0 || joystick.Vertical != 0)
                 {
-                    if (_weaponController._bulletsRiffle > 0)
+                    if (_weaponController.bulletsRiffle > 0)
                         if (_canShoot)
                         {
                             _canShoot = false;
                             _currentDelay = _shootingDelay;
+
                             GameObject bullet = Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
-                            _weaponController._bulletsRiffle--;
+                            _weaponController.bulletsRiffle--;
                             Counter.quantity--;
+
                             Destroy(bullet, 2f);
                         }
-                    if (_weaponController._bulletsRiffle == 0)
+
+                    if (_weaponController.bulletsRiffle == 0)
                         StartCoroutine(_weaponController.Reload());
             }
     }

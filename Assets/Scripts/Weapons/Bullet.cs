@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed;
+
+    public int damage = 10;
 
     public void FixedUpdate()
     {
@@ -14,9 +14,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("Hit " + collision);
         if (collision.gameObject.CompareTag("Wall"))
         {
-            print("Hit Wall");
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.TryGetComponent<EnemyController>(out EnemyController enemyController))
+        {
+            enemyController.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

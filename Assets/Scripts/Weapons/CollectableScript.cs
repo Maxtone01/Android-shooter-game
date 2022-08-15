@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class CollectableScript : MonoBehaviour
 {
-    public string itemType;
+    public enum WeaponType
+    {
+        Riffle,
+        Pistol,
+    }
+
+    public WeaponType weaponType;
+    public int bulletsQuantity;
 }

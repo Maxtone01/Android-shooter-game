@@ -53,7 +53,7 @@ public class SwitchSystem: MonoBehaviour
                 _weaponSwitch.SetWeaponData("Pistol");
                 break;
             case "Riffle":
-                if (SimpleInventory.Instance.inventory.Contains("Pistol"))
+                if (SimpleInventory.Instance.inventory.Contains(CollectableScript.WeaponType.Riffle))
                     _weaponSwitch.SetWeaponData("Riffle");
                 else
                     print("Not in inventory");

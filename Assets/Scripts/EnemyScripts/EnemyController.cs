@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public AimGun aimGun;
     internal Rigidbody2D rb2d;
-    public Gun[] guns;
-    public EnemyMover enemyMover;
     internal SpriteRenderer spriteRenderer;
     internal Animator animator;
+    public Gun[] guns;
+    public EnemyMover enemyMover;
+    public AimGun aimGun;
+    public int health;
+
+    public int currentHealth;
+    public HealthBar healthBar;
 
     private void Awake()
     {
@@ -24,6 +28,10 @@ public class EnemyController : MonoBehaviour
             guns = GetComponentsInChildren<Gun>();
         }
         rb2d = GetComponent<Rigidbody2D>();
+
+        this.currentHealth = health;
+
+        healthBar.SetMaxHealth(health);
     }
 
     public void HandleMoveBody(Vector2 movementVector)
@@ -48,4 +56,22 @@ public class EnemyController : MonoBehaviour
     {
         aimGun.Aim(pointerPosition);
     }
+
+    public void TakeDamage(int damage)
+    {
+        this.currentHealth -= damage;
+        if (this.currentHealth == 0)
+        { 
+            Destroy(gameObject);
+        }
+        healthBar.SetHealth(this.currentHealth);
+    }
+
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Bullet"))
+    //    {
+    //        TakeDamage();
+    //    }
+    //}
 }

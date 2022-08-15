@@ -12,13 +12,15 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     private Transform _weaponSlot;
     private GameObject _currentWeapon;
-    public int _bulletsPistol, _bulletsRiffle;
+    public int bulletsPistol, bulletsRiffle, bulletsPistolSupply, bulletsRiffleSupply;
     public GameObject _activePistol, _activeRiffle;
+    public static WeaponController Instance { get; private set; }
 
     public List<Weapon> weapons;
 
     private void Start()
     {
+        Instance = this;
         _gunShoot = GetComponent<GunShoot>();
 
         _activePistol = Instantiate(_pistol.weaponPrefab);
@@ -26,7 +28,10 @@ public class WeaponController : MonoBehaviour
         _activePistol.transform.SetParent(_weaponSlot);
         _activePistol.transform.localPosition = Vector3.zero;
         _activePistol.transform.localRotation = Quaternion.identity;
-        _bulletsPistol = _pistol.bulletsQuantity;
+
+        bulletsPistol = _pistol.bulletsQuantity;
+        bulletsPistolSupply = _pistol.bulletsSupply;
+
         _gunShoot._shootingDelay = _pistol.shootingDelay;
 
         _activeRiffle = Instantiate(_riffle.weaponPrefab);
@@ -34,7 +39,10 @@ public class WeaponController : MonoBehaviour
         _activeRiffle.transform.SetParent(_weaponSlot);
         _activeRiffle.transform.localPosition = Vector3.zero;
         _activeRiffle.transform.localRotation = Quaternion.identity;
-        _bulletsRiffle = _riffle.bulletsQuantity;
+
+        bulletsRiffle = _riffle.bulletsQuantity;
+        bulletsRiffleSupply = _riffle.bulletsSupply;
+
         _gunShoot._shootingDelay = _riffle.shootingDelay;
     }
 
@@ -45,12 +53,29 @@ public class WeaponController : MonoBehaviour
             case "Pistol":
                 _activePistol.SetActive(true);
                 _activeRiffle.SetActive(false);
-                Counter.quantity = _bulletsPistol;
+                Counter.quantity = bulletsPistol;
+                Counter.supply = bulletsPistolSupply;
                 break;
             case "Riffle":
                 _activePistol.SetActive(false);
                 _activeRiffle.SetActive(true);
-                Counter.quantity = _bulletsRiffle;
+                Counter.quantity = bulletsRiffle;
+                Counter.supply = bulletsRiffleSupply;
+                break;
+        }
+    }
+
+    public void SetSupplyQuantity(CollectableScript.WeaponType weaponName, int supplyQuantity)
+    {
+        switch (weaponName)
+        {
+            case CollectableScript.WeaponType.Pistol:
+                bulletsPistolSupply += supplyQuantity;
+                Counter.supply += supplyQuantity;
+                break;
+            case CollectableScript.WeaponType.Riffle:
+                bulletsRiffleSupply += supplyQuantity;
+                Counter.supply += supplyQuantity;
                 break;
         }
     }
@@ -64,17 +89,35 @@ public class WeaponController : MonoBehaviour
     {
         if (_activePistol.activeSelf)
         {
-            yield return new WaitForSeconds(2);
-            _bulletsPistol = _pistol.bulletsQuantity;
-            Counter.quantity = _bulletsPistol;
-            print("Reloaded Pistol");
+            if (bulletsPistolSupply > 0)
+            {
+                yield return new WaitForSeconds(2);
+                bulletsPistol = _pistol.bulletsQuantity;
+                bulletsPistolSupply -= 7;
+                Counter.quantity = bulletsPistol;
+                Counter.supply = bulletsPistolSupply;
+                print("Reloaded Pistol");
+            }
+            else if (bulletsPistolSupply == 0)
+            {
+                Debug.Log("Can't reload!");
+            }
         }
         if (_activeRiffle.activeSelf)
         {
-            yield return new WaitForSeconds(2);
-            _bulletsRiffle = _riffle.bulletsQuantity;
-            Counter.quantity = _bulletsRiffle;
-            print("Reloaded Riffle");
+            if (bulletsRiffleSupply != 0)
+            {
+                yield return new WaitForSeconds(2);
+                bulletsRiffle = _riffle.bulletsQuantity;
+                bulletsRiffleSupply -= 30;
+                Counter.quantity = bulletsRiffle;
+                Counter.supply = bulletsRiffleSupply;
+                print("Reloaded Riffle");
+            }
+            else if (bulletsRiffleSupply == 0)
+            {
+                Debug.Log("Can't reload!");
+            }
         }
     }
 }

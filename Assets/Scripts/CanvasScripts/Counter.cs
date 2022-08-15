@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Counter : MonoBehaviour
 {
     public static int quantity = 0;
+    public static int supply = 0;
     Text bulletsQuantity;
 
     private void Start()
@@ -15,6 +16,6 @@ public class Counter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bulletsQuantity.text = ": " + quantity;
+        bulletsQuantity.text = $"{quantity} / {supply}";
     }
 }

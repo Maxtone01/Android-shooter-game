@@ -15,15 +15,15 @@ public class UIWeaponSwap : MonoBehaviour, IPointerClickHandler
         _weaponSlot = transform.Find("WeaponSlots");
     }
 
-    public void ActivateWeapon(string weapon)
+    public void ActivateWeapon(CollectableScript.WeaponType weapon)
     {
         switch (weapon) 
         {
-            case "Pistol":
+            case CollectableScript.WeaponType.Pistol:
                 if(!_weaponSlot.Find("Pistol").gameObject.activeSelf)
                     _weaponSlot.Find("Pistol").gameObject.SetActive(true);
                 break;
-            case "Riffle":
+            case CollectableScript.WeaponType.Riffle:
                 if (!_weaponSlot.Find("Riffle").gameObject.activeSelf)
                     _weaponSlot.Find("Riffle").gameObject.SetActive(true);
                 break;
