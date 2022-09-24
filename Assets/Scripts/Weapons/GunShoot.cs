@@ -6,12 +6,14 @@ public class GunShoot : MonoBehaviour
 {
     [SerializeField]
     public WeaponController _weaponController;
+
     public GameObject bulletPrefab;
     public Transform shootingPoint;
     public Joystick joystick;
     public GameObject _gun;
     public float offset;
     public float _shootingDelay;
+
     private float rotz;
     private float _currentDelay = 0f;
     private bool _canShoot = true;

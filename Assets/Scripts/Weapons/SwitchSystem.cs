@@ -40,11 +40,6 @@ public class SwitchSystem: MonoBehaviour
         };
     }
 
-    //private void Start()
-    //{
-    //    _weaponController = GetComponent<WeaponController>();
-    //}
-
     public void Weapon(string weapon)
     {
         switch (weapon)
@@ -65,17 +60,6 @@ public class SwitchSystem: MonoBehaviour
     {
         return _weaponList;
     }
-    //public void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Alpha1))
-    //    {
-    //        _weaponList[0].activateWeapon();
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.Alpha2))
-    //    {
-    //        _weaponList[1].activateWeapon();
-    //    }
-    //}
     public class WeaponSwitcher
     {
         public WeaponType weapon;

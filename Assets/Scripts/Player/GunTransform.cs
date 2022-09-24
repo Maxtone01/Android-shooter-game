@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class GunTransform : MonoBehaviour
 {
     public Transform _gun;
     public void GunMover(Vector2 pointerPosition)

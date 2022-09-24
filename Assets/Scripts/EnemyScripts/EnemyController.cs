@@ -36,8 +36,6 @@ public class EnemyController : MonoBehaviour
 
     public void HandleMoveBody(Vector2 movementVector)
     {
-        //enemyMover.Move(movementVector);
-        //animator.Play("Enemy00Run");
         if (movementVector.x > 1)
             spriteRenderer.flipX = false;
         else if (movementVector.y < -1)
@@ -66,12 +64,4 @@ public class EnemyController : MonoBehaviour
         }
         healthBar.SetHealth(this.currentHealth);
     }
-
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Bullet"))
-    //    {
-    //        TakeDamage();
-    //    }
-    //}
 }

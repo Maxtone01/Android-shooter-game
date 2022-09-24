@@ -6,11 +6,14 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     private WeaponController weaponController;
+
     internal Rigidbody2D rb2d;
     internal Animator animator;
     internal SpriteRenderer[] spriteRenderer;
+
     private Sprite _pistol, _riffle;
     private Vector3 _respawnPos;
+
     public int playerHealth;
 
     public HealthBar healthBar;

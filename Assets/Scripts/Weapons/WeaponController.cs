@@ -7,16 +7,20 @@ public class WeaponController : MonoBehaviour
     public Weapon _pistol, _riffle;
     public GunShoot _gunShoot;
     public Weapon equippedWeapon;
-    [SerializeField]
-    private PlayerScript _playerScript;
-    [SerializeField]
-    private Transform _weaponSlot;
-    private GameObject _currentWeapon;
+
     public int bulletsPistol, bulletsRiffle, bulletsPistolSupply, bulletsRiffleSupply;
     public GameObject _activePistol, _activeRiffle;
     public static WeaponController Instance { get; private set; }
 
     public List<Weapon> weapons;
+
+    [SerializeField]
+    private PlayerScript _playerScript;
+
+    [SerializeField]
+    private Transform _weaponSlot;
+
+    private GameObject _currentWeapon;
 
     private void Start()
     {

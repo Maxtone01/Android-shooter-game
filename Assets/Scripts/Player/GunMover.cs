@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerInput : MonoBehaviour
+public class GunMover : MonoBehaviour
 {
     [SerializeField]
     private Camera _mainCamera;

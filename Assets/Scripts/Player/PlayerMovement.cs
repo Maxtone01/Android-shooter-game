@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private PlayerScript _playerScript;
+
     public float _speed;
+
     private Vector2 _moveInput;
     private Vector2 _moveVelocity;
     private bool _isMoving = true;
+
     public Camera _camera;
     public Joystick _joystick;
 
@@ -33,19 +36,6 @@ public class PlayerMovement : MonoBehaviour
             _moveVelocity = _moveInput.normalized * _speed;
         }
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Hittable"))
-    //    {
-    //        _isMoving = false;
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Hittable"))
-    //        _isMoving = true;
-    //}
 
     private void FixedUpdate()
     {
@@ -58,7 +48,5 @@ public class PlayerMovement : MonoBehaviour
         if (_moveInput.y < -0.4)
             _playerScript.animator.Play("PlayerRunDown");
         _playerScript.rb2d.MovePosition(_playerScript.rb2d.position + _moveVelocity * Time.fixedDeltaTime);
-        //_playerScript.spriteRenderer[1].flipX = _moveInput.x < 0.0f;
-        //_playerScript.spriteRenderer[0].flipX = _moveInput.x < 0.0f;
     }
 }

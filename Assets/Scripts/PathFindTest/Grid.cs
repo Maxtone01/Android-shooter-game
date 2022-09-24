@@ -46,7 +46,6 @@ public class Grid<TgridObject>
             {
                 for (int y = 0; y < _gridArray.GetLength(1); y++)
                 {
-                    //_debugTextArray[x, y] = CreateWorldText(_gridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * .5f, 8, Color.white, TextAnchor.MiddleCenter);
                     Debug.DrawLine(GetNodePosition(x, y), GetNodePosition(x, y + 1), Color.blue, 100f);
                     Debug.DrawLine(GetNodePosition(x, y), GetNodePosition(x + 1, y), Color.white, 100f);
                 }

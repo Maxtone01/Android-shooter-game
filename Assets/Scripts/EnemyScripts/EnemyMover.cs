@@ -21,9 +21,6 @@ public class EnemyMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //rb2d.velocity = (Vector2)transform.right * maxSpeed * movementVector * Time.fixedDeltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, movementVector, maxSpeed * Time.deltaTime);
-        //this.transform.position = Vector3.MoveTowards(this.transform.position, movementVector,
-        //    Time.fixedDeltaTime * maxSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, movementVector, maxSpeed * Time.fixedDeltaTime);
     }
 }
